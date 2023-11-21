@@ -21,8 +21,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 
 export const metadata = {
-  title: "Next.js App Router + Material UI v5",
-  description: "Next.js App Router + Material UI v5",
+  title: "MUI Practice",
+  description: "MUI Practice",
 };
 
 const DRAWER_WIDTH = 240;
@@ -61,13 +61,14 @@ export default function RootLayout({
           <Drawer
             sx={{
               width: DRAWER_WIDTH,
+              display: { md: "block", xs: "none" },
               flexShrink: 0,
               "& .MuiDrawer-paper": {
-                width: DRAWER_WIDTH,
                 boxSizing: "border-box",
                 top: ["48px", "56px", "64px"],
                 height: "auto",
                 bottom: 0,
+                width: DRAWER_WIDTH,
               },
             }}
             variant="permanent"
