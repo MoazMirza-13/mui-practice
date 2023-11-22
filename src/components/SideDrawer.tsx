@@ -5,6 +5,8 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+
+import Link from "next/link";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -69,7 +71,7 @@ export default function SideDrawer({ children }) {
       <List>
         {LINKS.map(({ text, href, icon: Icon }) => (
           <ListItem key={href} disablePadding>
-            <ListItemButton href={href}>
+            <ListItemButton component={Link} href={href}>
               <ListItemIcon>
                 <Icon />
               </ListItemIcon>

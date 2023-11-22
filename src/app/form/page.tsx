@@ -79,7 +79,7 @@ export default function TasksPage() {
   return (
     <Container maxWidth="lg">
       <Typography
-        variant="body1"
+        variant="h5"
         sx={{
           textAlign: "center",
           marginBottom: "20px",
