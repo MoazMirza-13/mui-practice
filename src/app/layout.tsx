@@ -11,7 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import StarIcon from "@mui/icons-material/Star";
 import ChecklistIcon from "@mui/icons-material/Checklist";
@@ -19,13 +19,14 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SupportIcon from "@mui/icons-material/Support";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
+import SideDrawer from "@/components/SideDrawer";
 
 export const metadata = {
   title: "MUI Practice",
   description: "MUI Practice",
 };
 
-const DRAWER_WIDTH = 240;
+// const DRAWER_WIDTH = 240;
 
 const LINKS = [
   { text: "Home", href: "/", icon: HomeIcon },
@@ -48,17 +49,19 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
-          <AppBar position="fixed" sx={{ zIndex: 2000 }}>
+          <AppBar position="static" sx={{ zIndex: 2000 }}>
             <Toolbar sx={{ backgroundColor: "background.paper" }}>
-              <DashboardIcon
-                sx={{ color: "#444", mr: 2, transform: "translateY(-2px)" }}
-              />
+              <SideDrawer>
+                <MenuIcon
+                  sx={{ color: "#444", mr: 2, transform: "translateY(-2px)" }}
+                />
+              </SideDrawer>
               <Typography variant="h6" color="text.primary">
                 MUI Practice Project
               </Typography>
             </Toolbar>
           </AppBar>
-          <Drawer
+          {/* <Drawer
             sx={{
               width: DRAWER_WIDTH,
               display: { md: "block", xs: "none" },
@@ -100,13 +103,13 @@ export default function RootLayout({
                 </ListItem>
               ))}
             </List>
-          </Drawer>
+          </Drawer> */}
           <Box
             component="main"
             sx={{
               flexGrow: 1,
               bgcolor: "background.default",
-              ml: `${DRAWER_WIDTH}px`,
+              // ml: `${DRAWER_WIDTH}px`,
               mt: ["48px", "56px", "64px"],
               p: 3,
             }}
