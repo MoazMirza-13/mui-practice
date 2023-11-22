@@ -8,11 +8,21 @@ import {
   Container,
   Grid,
   Button,
-  Alert,
+  // Alert,
   AlertTitle,
 } from "@mui/material";
 
-export default function TasksPage() {
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+export default function FormPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,10 +80,34 @@ export default function TasksPage() {
     }
 
     if (formIsValid) {
+      setOpen(true);
       console.log("Form submitted:", { name, email, password, confirm });
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirm("");
+      setErrors({
+        name: "",
+        email: "",
+        password: "",
+        confirm: "",
+      });
     } else {
       setErrors(newErrors);
     }
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -149,6 +183,15 @@ export default function TasksPage() {
         <Button variant="contained" onClick={submission}>
           Submit
         </Button>
+        <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Form Submitted Successfully !
+          </Alert>
+        </Snackbar>
       </Box>
     </Container>
   );
